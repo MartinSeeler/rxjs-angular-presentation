@@ -1,0 +1,170 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title RxJS and AngularJS
+
+    link(rel='stylesheet', type='text/css', href='build/build.css')
+
+  body
+
+    article
+
+      section
+        h2 RxJS and AngularJS
+        h3
+          a(href='https://twitter.com/Chasmo90') @Chasmo90
+        img.avatar.avatar--small(src='images/profile.jpg')
+      
+      section
+        h2 Agenda
+        ul.bullet
+          li Theory
+          li Demo
+        
+      section.gif.gif--observable
+        h1 OBSERVABLE  
+        
+      section
+        h3 The Observable is...
+        ul.bullet
+          li a push based collection
+          li the object that sends notifications
+          
+      section
+        pre
+          code.language-javascript.
+            const observable = Rx.Observable.create((observer) => {
+                observer.onNext(42);
+                observer.onCompleted();
+
+                return () => {
+                    console.log('disposed');
+                };
+            });
+      
+      section.gif.gif--observer
+        h1 OBSERVER
+          
+      section
+        h3 The Observer...
+        ul.bullet
+          li is the class that receives the notifications
+          li and defines what to do on each
+          
+      section
+        pre
+          code.language-javascript.
+            const observer = Rx.Observer.create(
+                (x) => console.log('Next: ' + x),
+                (err) => console.log('Error: ' + err),
+                () => console.log('Completed')
+            );
+        
+      //section.gif.gif--observer-error
+      //  h1 CONNECT ALL THE THINGS
+          
+      section.gif.gif--subscribe
+        h1 SUBSCRIBING TO EVENTS
+        
+      section
+        h3 Subscriptions
+        pre
+          code.language-javascript.
+            Rx.Observable.prototype.subscribe(
+              [observer] | 
+              [onNext], [onError], [onCompleted]
+            )
+      
+      section
+        h3 Example Subscription
+        pre
+          code.language-javascript.
+            const subscription = observable.subscribe(observer);
+      
+      section.gif.gif--unsubscribe
+        h1 UNSUBSCRIBING    
+          
+      section
+        h3 Cancel a subscription
+        pre
+          code.language-javascript.
+            subscription.dispose();    
+
+      section.gif.gif--subject
+        h1 SUBJECTS    
+        
+      section
+        h3 Subjects...
+        ul.bullet
+          li are <em>both</em>: an <b>Observable</b> and an <b>Observer</b>
+          li can act as a <em>proxy</em> for a group of subscribers and a source
+          li can be used as a <em>broadcast</em> in services
+          
+      section
+        h3 Example as observable
+        pre.bullet
+          code.language-javascript.
+            const subject = new Rx.Subject();
+            const subscription = subject.subscribe(
+              (x) => console.log('onNext: ' + x),
+              (e) => console.log('onError: ' + e.message),
+              () => console.log('onCompleted'));
+
+            subject.onNext(1); // => onNext: 1
+            subject.onNext(2); // => onNext: 2
+            subject.onCompleted(); // => onCompleted
+            subscription.dispose();    
+          
+      section
+        h3 Example as observer
+        pre.bullet
+          code.language-javascript.
+            const subject = new Rx.Subject();
+            const subscription = subject.subscribe(
+              (x) => console.log('onNext: ' + x),
+              (e) => console.log('onError: ' + e.message),
+              () => console.log('onCompleted'));
+
+            const source = Rx.Observable.interval(1000);
+            source.subscribe(subject);
+          
+      section
+        h2 Different types of Subjects
+        ul.bullet
+          li Subject
+          li ReplaySubject
+          li BehaviourSubject
+          li AsyncSubject
+          
+      section
+        h2 Combining multiple streams
+        pre.bullet
+          code.language-javascript.
+            Rx.Observable.combineLatest(...args, [resultSelector])
+          
+      section
+        h2 Zipping multiple streams
+        pre.bullet
+          code.language-javascript.
+            Rx.Observable.zip(...args, [resultSelector])
+      
+      section.gif.gif--demo
+        h1 DEMO TIME    
+          
+      section
+        h2 Conclusion
+        ul.bullet
+          li Easy to change / reorder
+          li Easy to migrate
+          li Immutability
+          li Native support in Angular 2
+          
+      section
+        h1 Q & Option[A]
+          
+      section.gif.gif--clap
+        h1 THANKS
+          
+    script(src='build/build.js')
