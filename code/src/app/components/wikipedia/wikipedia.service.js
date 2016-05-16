@@ -6,11 +6,7 @@ export function WikipediaService() {
 
   const searchResults = new Rx.BehaviorSubject([]);
 
-  Rx.Observable.combineLatest(queryTerm, searchSize)
-    .map(x => {
-      const [term = '', size = 10] = x;
-      return {term: term, size: size};
-    })
+  Rx.Observable.combineLatest(queryTerm, searchSize, (term, size) => { return {term: term, size: size};})
     .flatMap(executeSearch)
     .flatMap(parseWikipediaResponse)
     .subscribe(searchResults);
