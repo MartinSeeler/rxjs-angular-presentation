@@ -8,11 +8,10 @@ export function SearchResultsController($log, $scope, WikipediaService) {
   activate();
 
   function activate() {
-
     $log.info('SearchResultsController created');
 
     const resultsSubscription = WikipediaService.searchResults.subscribe(newResults => {
-      $log.info('results', newResults);
+      $log.info('Received new results', newResults);
       $scope.$applyAsync(() => vm.results = newResults);
     });
 

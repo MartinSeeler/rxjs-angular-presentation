@@ -4,8 +4,8 @@ import { config } from './index.config';
 import { routerConfig } from './index.route';
 import { runBlock } from './index.run';
 import { MainController } from './main/main.controller';
-import { SearchbarDirective } from '../app/components/searchbar/searchbar.directive';
-import { SearchbarController } from '../app/components/searchbar/searchbar.controller';
+import { SearchBarDirective } from '../app/components/searchbar/searchbar.directive';
+import { SearchBarController } from '../app/components/searchbar/searchbar.controller';
 import { SearchResultsController } from '../app/components/searchresults/searchresults.controller';
 import { SearchResultsDirective } from '../app/components/searchresults/searchresults.directive';
 import { SearchResultController } from '../app/components/searchresult/searchresult.controller';
@@ -19,10 +19,10 @@ angular.module('code', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMe
   .run(runBlock)
   .service('WikipediaService', WikipediaService)
   .controller('MainController', MainController)
-  .controller('SearchbarController', SearchbarController)
+  .controller('SearchBarController', SearchBarController)
   .controller('SearchResultsController', SearchResultsController)
   .directive('searchResults', SearchResultsDirective)
   .controller('SearchResultController', SearchResultController)
   .directive('searchResult', SearchResultDirective)
-  .directive('searchbar', SearchbarDirective)
+  .directive('searchBar', SearchBarDirective)
 ;

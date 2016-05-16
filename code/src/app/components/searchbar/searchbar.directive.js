@@ -1,6 +1,6 @@
-import { SearchbarController } from './searchbar.controller';
+import { SearchBarController } from './searchbar.controller';
 
-export function SearchbarDirective() {
+export function SearchBarDirective() {
   'ngInject';
 
   return {
@@ -9,8 +9,8 @@ export function SearchbarDirective() {
     scope: {
       creationDate: '='
     },
-    controller: SearchbarController,
-    controllerAs: 'searchbar',
+    controller: SearchBarController,
+    controllerAs: 'searchBar',
     bindToController: true
   };
 }

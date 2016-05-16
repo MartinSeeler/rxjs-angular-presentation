@@ -3,6 +3,7 @@ export function WikipediaService() {
 
   const queryTerm = new Rx.BehaviorSubject('');
   const searchSize = new Rx.BehaviorSubject(10);
+
   const searchResults = new Rx.BehaviorSubject([]);
 
   Rx.Observable.combineLatest(queryTerm, searchSize)
