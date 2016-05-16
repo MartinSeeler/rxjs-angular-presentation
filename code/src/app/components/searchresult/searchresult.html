@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+  <div class="panel-heading" ng-bind="::searchResult.result.title"></div>
+  <div class="panel-body">
+    <p ng-bind="::searchResult.result.content"></p>
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-default" ng-click="searchResult.setTitleAsNewQuery()">Set as query</button>
+    </div>
+  </div>
+</div>

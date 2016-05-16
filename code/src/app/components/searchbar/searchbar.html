@@ -1,0 +1,27 @@
+<div class="col-lg-12">
+  <br>
+  <div class="input-group input-group-lg">
+    <input id="queryterm" type="text" class="form-control" placeholder="Search Wikipedia for...">
+    <div class="input-group-btn" uib-dropdown="" is-open="status.isopen">
+        <button id="single-button" type="button" class="btn btn-primary dropdown-toggle"
+                uib-dropdown-toggle="" ng-disabled="disabled" aria-haspopup="true" aria-expanded="false">{{ searchbar.searchSize }} <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" uib-dropdown-menu="" role="menu" aria-labelledby="single-button">
+          <li role="menuitem"><a ng-click="searchbar.updateSearchSize(2)">2</a></li>
+          <li role="menuitem"><a ng-click="searchbar.updateSearchSize(10)">10</a></li>
+          <li role="menuitem"><a ng-click="searchbar.updateSearchSize(50)">50</a></li>
+          <li class="divider"></li>
+          <li role="menuitem"><a ng-click="searchbar.updateSearchSize(100)">100</a></li>
+        </ul>
+      <!--<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">Action <span class="caret"></span></button>
+      <ul class="dropdown-menu dropdown-menu-right">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+      </ul>-->
+    </div><!-- /btn-group -->
+  </div>
+</div>
